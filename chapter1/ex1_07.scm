@@ -21,3 +21,8 @@
 ; New good-enough? uses the guess to determine our tolerance
 (define (good-enough? guess x)
   (< (abs (- (square guess) x)) (/ guess 10000)))
+
+; Corrected good-enough? based on discussion with @knaveofdiamonds
+; This will work for both small and very large numbers.
+(define (good-enough2? old-guess guess _)
+  (< (/ (abs (- old-guess guess)) guess) 0.001))
